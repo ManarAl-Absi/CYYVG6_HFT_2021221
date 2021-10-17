@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Models
 {
-    [Table ("Locations")]
+    [Table("Locations")]
     public class Location
     {
         [Key]
@@ -20,9 +20,8 @@ namespace CYYVG6_HFT_2021221.Models
 
         public virtual Student Student { get; set; }
 
-        [ForeignKey(nameof(Student))]
-        public int StudentId { get; set; }
-
+        [ForeignKey(nameof(Faculty))]
+        public int FacultyId { get; set; }
 
     }
 }

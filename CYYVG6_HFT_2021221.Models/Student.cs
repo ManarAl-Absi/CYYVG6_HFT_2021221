@@ -22,7 +22,7 @@ namespace CYYVG6_HFT_2021221.Models
         [MaxLength(100)]
         public string Nationality { get; set; }
         public int Age { get; set; }
-        public bool? IsHungarian { get; set; }
+        public bool? SpeaksHungarian { get; set; }
         public bool? HasScholarship { get; set; }
 
         [NotMapped]
