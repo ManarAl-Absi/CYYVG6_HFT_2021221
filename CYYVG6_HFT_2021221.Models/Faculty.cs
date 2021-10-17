@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Models
 {
-    class Faculty
+    public class Faculty
     {
+
     }
 }
