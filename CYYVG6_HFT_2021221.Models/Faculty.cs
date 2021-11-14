@@ -11,7 +11,7 @@ namespace CYYVG6_HFT_2021221.Models
     
         [Table("Faculty")]
         public class Faculty
-    {
+        {
             [Key]
             [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
             public int FacultyId { get; set; }
@@ -27,7 +27,7 @@ namespace CYYVG6_HFT_2021221.Models
              public virtual ICollection<Location> Locations { get; }
 
     
-    }
+        }
 
 
 }

@@ -35,7 +35,5 @@ namespace CYYVG6_HFT_2021221.Models
         {
             Faculties = new HashSet<Faculty>();
         }
-
-
     }
 }

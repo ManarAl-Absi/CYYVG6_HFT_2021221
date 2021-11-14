@@ -20,7 +20,7 @@ namespace CYYVG6_HFT_2021221.Models
 
         public bool? IsNearDorm { get; set; }
 
-        public virtual Faculty Faculty { get; set; }
+        public virtual Faculty Faculty { get;  }
 
         [ForeignKey(nameof(Faculty))]
         public int FacultyId { get; set; }

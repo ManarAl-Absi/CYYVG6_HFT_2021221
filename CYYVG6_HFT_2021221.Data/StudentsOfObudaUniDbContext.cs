@@ -75,7 +75,7 @@ namespace StudentSystem.Data
 
             modelBuilder.Entity<Student>().HasData(s0, s1, s2, s3);
             modelBuilder.Entity<Faculty>().HasData(f0, f1, f2, f3);
-            modelBuilder.Entity<Location>().HasData(l0, l1, l2, l3);
+            modelBuilder.Entity<Location>().HasData(l0, l1, l2, f3);
         }
     }
 }
