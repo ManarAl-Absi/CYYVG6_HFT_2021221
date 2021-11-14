@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace StudentSystem.Data
 {
-    public class StudentContext : DbContext
+    public class StudentsOfObudaUniDbContext : DbContext
     {
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
 
-        public StudentContext()
+        public StudentsOfObudaUniDbContext()
         {
             this.Database.EnsureCreated();
         }
 
-        public StudentContext(DbContextOptions<StudentContext> options)
+        public StudentsOfObudaUniDbContext(DbContextOptions<StudentsOfObudaUniDbContext> options)
             : base(options)
         {
         }
@@ -39,7 +39,7 @@ namespace StudentSystem.Data
             Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", SpeaksHungarian = false, HasScholarship = true };
             Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", SpeaksHungarian = false, HasScholarship = true };
             Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", SpeaksHungarian = true, HasScholarship = false };
-            Student s3 = new Student() { StudentId = 4, FulName = "Abood Sharaf", Age = 24, Nationality = "Jordan", SpeaksHungarian = true, HasScholarship = true };
+            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", SpeaksHungarian = true, HasScholarship = true };
 
 
             Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics" };
