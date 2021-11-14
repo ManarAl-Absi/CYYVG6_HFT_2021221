@@ -24,7 +24,9 @@ namespace CYYVG6_HFT_2021221.Models
             [ForeignKey(nameof(Student))]
             public int StudentId { get; set; }
 
-        }
+             public virtual ICollection<Location> Locations { get; }
+
+    
     }
 
 

@@ -59,10 +59,18 @@ namespace StudentSystem.Data
 
             modelBuilder.Entity<Faculty>(entity =>
             {
-                entity.HasOne(Faculties => Faculties.Student)
+                entity.HasOne(faculty => faculty.Student)
                     .WithMany(Student => Student.Faculties)
-                    .HasForeignKey(Faculties => Faculties.StudentId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .HasForeignKey(faculty => faculty.StudentId)
+                    .OnDelete(DeleteBehavior.SetNull);
+            });
+
+            modelBuilder.Entity<Location>(entity =>
+            {
+                entity.HasOne(location => location.Faculty)
+                    .WithMany(Faculty => Faculty.Locations)
+                    .HasForeignKey(location => location.FacultyId)
+                    .OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Student>().HasData(s0, s1, s2, s3);

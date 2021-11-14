@@ -27,10 +27,10 @@ namespace CYYVG6_HFT_2021221.Models
         public bool? HasScholarship { get; set; }
 
         [NotMapped]
-        public string MainData => $"[{StudentId}] : {FulName} : {Nationality} : {Majors}  (Age: {Age}) (Number of faculties he or she attends: {Faculties.Count()})";
+        public string MainData => $"[{StudentId}] : {FulName} : {Nationality} : {Major}  (Age: {Age}) (Number of faculties he or she attends: {Faculties.Count()})";
 
         [NotMapped]
-        public virtual ICollection<Faculty> Faculties { get; set; }
+        public virtual ICollection<Faculty> Faculties { get; }
         public Student()
         {
             Faculties = new HashSet<Faculty>();
