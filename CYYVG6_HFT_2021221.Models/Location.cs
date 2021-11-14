@@ -16,7 +16,9 @@ namespace CYYVG6_HFT_2021221.Models
         public int LocationId { get; set; }
 
         [MaxLength (100)]
-        public string Faculty { get; set; }
+        public string Address { get; set; }
+
+        public bool? IsNearDorm { get; set; }
 
         public virtual Student Student { get; set; }
 

@@ -22,11 +22,12 @@ namespace CYYVG6_HFT_2021221.Models
         [MaxLength(100)]
         public string Nationality { get; set; }
         public int Age { get; set; }
+        public string Major { get; set; }
         public bool? SpeaksHungarian { get; set; }
         public bool? HasScholarship { get; set; }
 
         [NotMapped]
-        public string MainData => $"[{StudentId}] : {FulName} : {Nationality} (Age: {Age}) (Number of faculties he or she attends: {Faculties.Count()})";
+        public string MainData => $"[{StudentId}] : {FulName} : {Nationality} : {Majors}  (Age: {Age}) (Number of faculties he or she attends: {Faculties.Count()})";
 
         [NotMapped]
         public virtual ICollection<Faculty> Faculties { get; set; }

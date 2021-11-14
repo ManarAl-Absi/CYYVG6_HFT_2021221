@@ -36,21 +36,23 @@ namespace StudentSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", SpeaksHungarian = false, HasScholarship = true };
-            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", SpeaksHungarian = false, HasScholarship = true };
-            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", SpeaksHungarian = true, HasScholarship = false };
-            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", SpeaksHungarian = true, HasScholarship = true };
+            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", Major= "Electirical Engineering", SpeaksHungarian = false, HasScholarship = true };
+            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", Major = "Computer Scince and Engineering", SpeaksHungarian = false, HasScholarship = true };
+            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", Major = "Mechanical Engineering", SpeaksHungarian = true, HasScholarship = false };
+            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", Major = "Environmental Engineering", SpeaksHungarian = true, HasScholarship = true };
 
 
-            Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics" };
-            Faculty f1 = new Faculty() { FacultyId = 2, FacultyName = "BÁNKI DONÁT FACULTY OF MECHANICAL ANDSAFETY ENGINEERING" };
-            Faculty f2 = new Faculty() { FacultyId = 3, FacultyName = "Rejtő Sándor Faculty of Light Industry and Environmental Engineering" };
+            Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics", StudentId=s1.StudentId };
+            Faculty f1 = new Faculty() { FacultyId = 2, FacultyName = "BÁNKI DONÁT FACULTY OF MECHANICAL AND SAFETY ENGINEERING", StudentId = s2.StudentId };
+            Faculty f2 = new Faculty() { FacultyId = 3, FacultyName = "Rejtő Sándor Faculty of Light Industry and Environmental Engineering", StudentId = s3.StudentId };
+            Faculty f3 = new Faculty() { FacultyId = 4, FacultyName = "Kandó Kálmán Faculty of Electrical Engineering", StudentId = s0.StudentId };
 
 
-            f0.StudentId = s0.StudentId;
-            f1.StudentId = s1.StudentId;
-            f2.StudentId = s2.StudentId;
-            f1.StudentId = s3.StudentId;
+            Location l0 = new Location() { LocationId = 1, Address = "1034 Budapest, Becsi u. 96b", FacultyId=f0.FacultyId, IsNearDorm = true };
+            Location l1 = new Location() { LocationId = 2, Address = "1034 Budapest, Becsi u. 94-96", FacultyId = f3.FacultyId, IsNearDorm = true };
+            Location l2 = new Location() { LocationId = 3, Address = "1081 Budapest, Nepszinhaz u. 8", FacultyId = f1.FacultyId, IsNearDorm = false };
+            Location l3 = new Location() { LocationId = 4, Address = "1034 Budapest, Doberdo ut 6", FacultyId = f2.FacultyId, IsNearDorm = true };
+
 
 
 
