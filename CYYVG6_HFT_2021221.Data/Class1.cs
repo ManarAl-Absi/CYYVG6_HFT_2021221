@@ -12,6 +12,7 @@ namespace StudentSystem.Data
     {
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
 
         public StudentContext()
         {
@@ -29,7 +30,7 @@ namespace StudentSystem.Data
             {
                 optionsBuilder
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BlogSystem.mdf;Integrated Security=True");
+                    .UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\StudentSystem.mdf;Integrated Security=True");
             }
         }
 
