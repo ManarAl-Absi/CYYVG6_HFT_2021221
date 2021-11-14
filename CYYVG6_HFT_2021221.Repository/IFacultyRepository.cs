@@ -9,6 +9,6 @@ namespace CYYVG6_HFT_2021221.Repository
 {
     public interface IFacultyRepository : IRepository<Faculty>
     {
-        //No thing to change :)
+        void ChangeFacultyName(int id, string newName);
     }
 }
