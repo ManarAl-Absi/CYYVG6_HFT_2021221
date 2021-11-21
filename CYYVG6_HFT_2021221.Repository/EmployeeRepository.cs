@@ -26,6 +26,17 @@ namespace CYYVG6_HFT_2021221.Repository
             this.Context.SaveChanges();
         }
 
+        public void ChangeEmail(int id, string newEmail)
+        {
+            var employee = this.GetOne(id);
+            if (employee == null)
+            {
+                throw new InvalidOperationException("Sorry! employee does not exist");
+            }
+            employee.Email = newEmail;
+            this.Context.SaveChanges();
+        }
+
         public void ChangeEmployeeSalary(int id, int newSalary)
         {
             var employee = this.GetOne(id);
