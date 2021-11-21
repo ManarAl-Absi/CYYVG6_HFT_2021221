@@ -15,6 +15,17 @@ namespace CYYVG6_HFT_2021221.Repository
         {
         }
 
+        public void ChangePrice(int id, int newPrice)
+        {
+            var student = this.GetOne(id);
+            if (student == null)
+            {
+                throw new InvalidOperationException("Sorry! This student is not in our university");
+            }
+            student.TitutionPrice = newPrice;
+            this.Context.SaveChanges();
+        }
+
         public void ChangeMajorWithinTheFaculty(int id, string newMajor)
         {
             var student = this.GetOne(id);

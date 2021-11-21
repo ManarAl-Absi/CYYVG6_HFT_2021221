@@ -14,12 +14,24 @@ namespace CYYVG6_HFT_2021221.Repository
             : base(DbCntx)
         {
         }
+
+        public void changeFacultyAddress(int id, string newAdress)
+        {
+            var faculty = this.GetOne(id);
+            if (faculty == null)
+            {
+                throw new InvalidOperationException("Sorry! Wrong faculty");
+            }
+            faculty.FacultyAddress = newAdress;
+            this.Context.SaveChanges();
+        }
+
         public void ChangeFacultyName(int id, string newName)
         {
             var faculty = this.GetOne(id);
             if (faculty == null)
             {
-                throw new InvalidOperationException("Sorry! Wrong name");
+                throw new InvalidOperationException("Sorry! Wrong faculty");
             }
             faculty.FacultyName = newName;
             this.Context.SaveChanges();

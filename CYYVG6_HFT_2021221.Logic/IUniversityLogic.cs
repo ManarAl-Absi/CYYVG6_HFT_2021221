@@ -19,12 +19,12 @@ namespace CYYVG6_HFT_2021221.Logic
         IList<Employee> GetAllEmployees();
 
         void ChangeEmployeeSalary(int id, int newSalary);
-        void ChangeEmployeePosition(int id, int newPosition);
-        void changeStudentFaculty(int id, Faculty newFaculty);
+        void ChangeEmployeePosition(int id, string newPosition);
+        void changeStudentTitutionPrice(int id, int newPrice);
         void changeFacultyAddress(int id, string newAdress);
-        void ChangeEmployeeFaculty(int id, Faculty newFaculty);
+        void ChangeFacultyName(int id, string newName);
 
-        IList<TotalEmployeeSalary> EmployeePayment();
+        
 
 
     }

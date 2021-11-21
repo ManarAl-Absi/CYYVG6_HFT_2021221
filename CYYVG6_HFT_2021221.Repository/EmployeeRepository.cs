@@ -20,9 +20,31 @@ namespace CYYVG6_HFT_2021221.Repository
             var employee = this.GetOne(id);
             if (employee == null)
             {
-                throw new InvalidOperationException("Sorry! Wrong address");
+                throw new InvalidOperationException("Sorry! employee does not exist");
             }
             employee.Address = newAddress;
+            this.Context.SaveChanges();
+        }
+
+        public void ChangeEmployeeSalary(int id, int newSalary)
+        {
+            var employee = this.GetOne(id);
+            if (employee == null)
+            {
+                throw new InvalidOperationException("Sorry! employee does not exist");
+            }
+            employee.Salary = newSalary;
+            this.Context.SaveChanges();
+        }
+
+        public void ChangePosition(int id, string newPosition)
+        {
+            var employee = this.GetOne(id);
+            if (employee == null)
+            {
+                throw new InvalidOperationException("Sorry! employee does not exist");
+            }
+            employee.Position = newPosition;
             this.Context.SaveChanges();
         }
 
