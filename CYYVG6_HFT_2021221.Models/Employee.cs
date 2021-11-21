@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 namespace CYYVG6_HFT_2021221.Models
 {
     [Table("Locations")]
-    public class Location
+    public class Employee
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int LocationId { get; set; }
+        public int EmployeeId { get; set; }
 
         [MaxLength (100)]
+        public string FulName { get; set; }
+        public int Age { get; set; }
         public string Address { get; set; }
-
-        public bool? IsNearDorm { get; set; }
+        public string Email { get; set; }
+        public string Position{ get; set; }   //Professor, Lecturer, manager, Customer Service, Programmer
+        public int Salary { get; set; }
 
         public virtual Faculty Faculty { get;  }
 

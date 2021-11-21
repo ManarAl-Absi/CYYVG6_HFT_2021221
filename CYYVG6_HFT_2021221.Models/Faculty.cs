@@ -18,13 +18,14 @@ namespace CYYVG6_HFT_2021221.Models
 
             [MaxLength(100)]
             public string FacultyName { get; set; }
+            public string FacultyAddress { get; set; }
 
             public virtual Student Student { get; set; }
 
             [ForeignKey(nameof(Student))]
             public int StudentId { get; set; }
 
-             public virtual ICollection<Location> Locations { get; }
+            public virtual ICollection<Employee> Employees { get; }
 
     
         }

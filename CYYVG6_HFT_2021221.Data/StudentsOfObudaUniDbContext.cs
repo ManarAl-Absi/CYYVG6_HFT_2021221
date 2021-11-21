@@ -12,7 +12,7 @@ namespace StudentSystem.Data
     {
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
 
         public StudentsOfObudaUniDbContext()
         {
@@ -36,22 +36,22 @@ namespace StudentSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", Major= "Electirical Engineering", SpeaksHungarian = false, HasScholarship = true };
-            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", Major = "Computer Scince and Engineering", SpeaksHungarian = false, HasScholarship = true };
-            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", Major = "Mechanical Engineering", SpeaksHungarian = true, HasScholarship = false };
-            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", Major = "Environmental Engineering", SpeaksHungarian = true, HasScholarship = true };
+            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", Major= "Electirical Engineering", SpeaksHungarian = false, PriceToPayPerSemester = 2800 };
+            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", Major = "Computer Scince and Engineering", SpeaksHungarian = false, PriceToPayPerSemester = 3000 };
+            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", Major = "Mechanical Engineering", SpeaksHungarian = true, PriceToPayPerSemester = 2800 };
+            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", Major = "Environmental Engineering", SpeaksHungarian = true, PriceToPayPerSemester = 2500 };
 
 
-            Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics", StudentId=s1.StudentId };
-            Faculty f1 = new Faculty() { FacultyId = 2, FacultyName = "BÁNKI DONÁT FACULTY OF MECHANICAL AND SAFETY ENGINEERING", StudentId = s2.StudentId };
-            Faculty f2 = new Faculty() { FacultyId = 3, FacultyName = "Rejtő Sándor Faculty of Light Industry and Environmental Engineering", StudentId = s3.StudentId };
-            Faculty f3 = new Faculty() { FacultyId = 4, FacultyName = "Kandó Kálmán Faculty of Electrical Engineering", StudentId = s0.StudentId };
+            Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics", FacultyAddress = "1034 Budapest, Becsi u. 96b", StudentId=s1.StudentId };
+            Faculty f1 = new Faculty() { FacultyId = 2, FacultyName = "BÁNKI DONÁT FACULTY OF MECHANICAL AND SAFETY ENGINEERING", FacultyAddress = "1081 Budapest, Nepszinhaz u. 8", StudentId = s2.StudentId };
+            Faculty f2 = new Faculty() { FacultyId = 3, FacultyName = "Rejtő Sándor Faculty of Light Industry and Environmental Engineering", FacultyAddress = "1034 Budapest, Doberdo ut 6", StudentId = s3.StudentId };
+            Faculty f3 = new Faculty() { FacultyId = 4, FacultyName = "Kandó Kálmán Faculty of Electrical Engineering", FacultyAddress = "1034 Budapest, Becsi u. 94-96", StudentId = s0.StudentId };
 
 
-            Location l0 = new Location() { LocationId = 1, Address = "1034 Budapest, Becsi u. 96b", FacultyId=f0.FacultyId, IsNearDorm = true };
-            Location l1 = new Location() { LocationId = 2, Address = "1034 Budapest, Becsi u. 94-96", FacultyId = f3.FacultyId, IsNearDorm = true };
-            Location l2 = new Location() { LocationId = 3, Address = "1081 Budapest, Nepszinhaz u. 8", FacultyId = f1.FacultyId, IsNearDorm = false };
-            Location l3 = new Location() { LocationId = 4, Address = "1034 Budapest, Doberdo ut 6", FacultyId = f2.FacultyId, IsNearDorm = true };
+            Employee e0 = new Employee() { EmployeeId = 1, FulName = "Klespitz Jozsef", Age = 38, Address = "1074 Budapest, Absd u. 9", FacultyId=f0.FacultyId, Email = "abcd@gmail.com", Position = "Professor", Salary = 3000 };
+            Employee e1 = new Employee() { EmployeeId = 2, FulName = "Kristina Petrovikj", Age= 25, Address= "1066 Budapest, Efgh u. 6", FacultyId = f3.FacultyId, Email = "efgh@gmail.com", Position = "Lecturer", Salary = 1000 };
+            Employee e2 = new Employee() { EmployeeId = 3, FulName = "Siklosi daniel", Age = 30, Address = "1081 Budapest, Ijkl u. 8", FacultyId = f1.FacultyId, Email = "ijkl@gmail.com", Position = "Programmer",Salary = 1800};
+            Employee e3 = new Employee() { EmployeeId = 4, FulName = "Borbas Laszlo", Age = 51, Address = "1034 Budapest, Mnop ut 67", FacultyId = f2.FacultyId, Email = "mnop@gmail.com", Position = "Manager", Salary = 5000};
 
 
 
@@ -65,17 +65,17 @@ namespace StudentSystem.Data
                     .OnDelete(DeleteBehavior.SetNull);
             });
 
-            modelBuilder.Entity<Location>(entity =>
+            modelBuilder.Entity<Employee>(entity =>
             {
-                entity.HasOne(location => location.Faculty)
-                    .WithMany(Faculty => Faculty.Locations)
-                    .HasForeignKey(location => location.FacultyId)
+                entity.HasOne(employee => employee.Faculty)
+                    .WithMany(Faculty => Faculty.Employees)
+                    .HasForeignKey(employee => employee.FacultyId)
                     .OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Student>().HasData(s0, s1, s2, s3);
             modelBuilder.Entity<Faculty>().HasData(f0, f1, f2, f3);
-            modelBuilder.Entity<Location>().HasData(l0, l1, l2, f3);
+            modelBuilder.Entity<Employee>().HasData(e0, e1, e2, f3);
         }
     }
 }

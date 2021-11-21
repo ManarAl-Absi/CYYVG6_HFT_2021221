@@ -8,39 +8,39 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public class LocationRepository : Repository<Location>, ILocationRepository
+    public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
     {
-        public LocationRepository(DbContext DbCntx)
+        public EmployeeRepository(DbContext DbCntx)
             : base(DbCntx)
         {
         }
 
         public void ChangeAddress(int id, string newAddress)
         {
-            var location = this.GetOne(id);
-            if (location == null)
+            var employee = this.GetOne(id);
+            if (employee == null)
             {
                 throw new InvalidOperationException("Sorry! Wrong address");
             }
-            location.Address = newAddress;
+            employee.Address = newAddress;
             this.Context.SaveChanges();
         }
 
-        public override Location GetOne(int id)
+        public override Employee GetOne(int id)
         {
-            return this.GetAll().SingleOrDefault(x => x.LocationId == id);
+            return this.GetAll().SingleOrDefault(x => x.EmployeeId == id);
         }
 
-        public override void Insert(Location entity)
+        public override void Insert(Employee entity)
         {
-            this.Context.Set<Location>().Add(entity);
+            this.Context.Set<Employee>().Add(entity);
             this.Context.SaveChanges();
         }
 
         public override void Remove(int id)
         {
-            Location loc = this.GetOne(id);
-            this.Context.Set<Location>().Remove(loc);
+            Employee emp = this.GetOne(id);
+            this.Context.Set<Employee>().Remove(emp);
             this.Context.SaveChanges();
         }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public interface ILocationRepository : IRepository<Location>
+    public interface IEmployeeRepository : IRepository<Employee>
     {
         void ChangeAddress(int id, string newAddress);
     }

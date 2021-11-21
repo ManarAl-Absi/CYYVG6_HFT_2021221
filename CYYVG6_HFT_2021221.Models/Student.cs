@@ -20,20 +20,22 @@ namespace CYYVG6_HFT_2021221.Models
         public string FulName { get; set; }
 
         [MaxLength(100)]
-        public string Nationality { get; set; }
-        public int Age { get; set; }
         public string Major { get; set; }
+
+        public string Gender { get; set; }
+        public int Age { get; set; }
+        public string Nationality { get; set; }
         public bool? SpeaksHungarian { get; set; }
-        public bool? HasScholarship { get; set; }
+        public int PriceToPayPerSemester { get; set; }
 
         [NotMapped]
-        public string MainData => $"[{StudentId}] : {FulName} : {Nationality} : {Major}  (Age: {Age}) (Number of faculties he or she attends: {Faculties.Count()})";
+        public string MainData => $"[{StudentId}] : {FulName} : {Gender} : {Nationality} : {Major}  (Age: {Age}) (Number of faculties he or she attends: {Faculties.Count()})";
 
         [NotMapped]
         public virtual ICollection<Faculty> Faculties { get; }
         public Student()
         {
-            Faculties = new HashSet<Faculty>();
+            this.Faculties = new HashSet<Faculty>();
         }
     }
 }
