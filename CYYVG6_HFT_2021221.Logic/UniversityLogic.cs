@@ -148,6 +148,10 @@ namespace CYYVG6_HFT_2021221.Logic
                 this.studentRepository.Remove(id);
             }
         }
+        public int NumOfStudentInUniversity()
+        {
+            return studentRepository.GetAll().Count();
+        }
         public double AVGAgeOfStudents()
         {
             return studentRepository.GetAll().Average(a => a.Age);
