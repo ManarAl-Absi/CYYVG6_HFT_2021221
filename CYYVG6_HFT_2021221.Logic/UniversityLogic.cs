@@ -160,5 +160,9 @@ namespace CYYVG6_HFT_2021221.Logic
         {
             return employeeRepository.GetAll().Sum(s => s.Salary);
         }
+        public int MoneyUniversityEarnFromStudent()
+        {
+            return studentRepository.GetAll().Sum(s => s.TitutionPrice);
+        }
     }
 }
