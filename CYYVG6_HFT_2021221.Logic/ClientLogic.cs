@@ -58,5 +58,9 @@ namespace CYYVG6_HFT_2021221.Logic
                 this.facultyRepository.Remove(id);
             }
         }
+        public bool BecomeHungarianSpeaker(int id)
+        {
+            return studentRepository.GetOne(id).SpeaksHungarian.Equals(true);
+        }
     }
 }
