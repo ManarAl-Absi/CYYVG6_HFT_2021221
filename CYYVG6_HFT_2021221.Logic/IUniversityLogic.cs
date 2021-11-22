@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Logic
 {
-    interface IUniversityLogic
+    public interface IUniversityLogic
     {
         Faculty GetOneFaculty(int id);
         IList<Faculty> GetAllFaculties();

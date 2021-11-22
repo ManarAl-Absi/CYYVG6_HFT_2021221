@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Logic
 {
-    interface IClientLogic
+    public interface IClientLogic
     {
         void ChangeStudentMajor(int id, string newMajor);
         void ChangeEmployeeAddress(int id, string newAddress);

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Logic
 {
-    class UniversityLogic : IUniversityLogic
+    public class UniversityLogic : IUniversityLogic
     {
         private IStudentRepository studentRepository;
         private IEmployeeRepository employeeRepository;
