@@ -12,9 +12,7 @@ namespace CYYVG6_HFT_2021221.Test
     [TestFixture]
     public class UniversityLogicTest
     {
-        private Mock<IStudentRepository> studentRepository;
-        private Mock<IEmployeeRepository> employeeRepository;
-        private Mock<IFacultyRepository> facultyRepository;
+      
         //private UniversityLogic universityLogic;
 
         UniversityLogic ul;
