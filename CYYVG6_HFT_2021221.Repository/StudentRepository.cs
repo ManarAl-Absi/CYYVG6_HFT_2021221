@@ -1,5 +1,6 @@
 ﻿using CYYVG6_HFT_2021221.Models;
 using Microsoft.EntityFrameworkCore;
+using StudentSystem.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,51 +9,42 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public class StudentRepository : Repository<Student>, IStudentRepository
+    public class StudentRepository : IStudentRepository
     {
-        public StudentRepository(DbContext DbCntx)
-            : base(DbCntx)
+        StudentsOfObudaUniDbContext db;
+        public StudentRepository(StudentsOfObudaUniDbContext db)
         {
+            this.db = db;
         }
 
-        public void ChangePrice(int id, int newPrice)
+        public void Create(Student student)
         {
-            var student = this.GetOne(id);
-            if (student == null)
-            {
-                throw new InvalidOperationException("Sorry! This student is not in our university");
-            }
-            student.TitutionPrice = newPrice;
-            this.Context.SaveChanges();
+            this.db.Students.Add(student);
+            this.db.SaveChanges();
         }
 
-        public void ChangeMajorWithinTheFaculty(int id, string newMajor)
+        public void Delete(int id)
         {
-            var student = this.GetOne(id);
-            if (student == null)
-            {
-                throw new InvalidOperationException("Sorry! This student is not in our university");
-            }
-            student.Major = newMajor;
-            this.Context.SaveChanges();
+            Student stud = this.Read(id);
+            this.db.Students.Remove(stud);
+            this.db.SaveChanges();
         }
 
-        public override Student GetOne(int id)
+        public IQueryable<Student> GetAll()
         {
-            return this.GetAll().SingleOrDefault(x => x.StudentId == id);
+            return db.Students;
         }
 
-        public override void Insert(Student entity)
+        public Student Read(int id)
         {
-            this.Context.Set<Student>().Add(entity);
-            this.Context.SaveChanges();
+            return db.Students.FirstOrDefault(f => f.StudentId == id);
         }
 
-        public override void Remove(int id)
+        public void Update(Student student)
         {
-            Student stud = this.GetOne(id);
-            this.Context.Set<Student>().Remove(stud);
-            this.Context.SaveChanges();
+            Student stud = this.Read(student.StudentId);
+            stud.FulName = student.FulName;
+            this.db.SaveChanges();
         }
     }
 }

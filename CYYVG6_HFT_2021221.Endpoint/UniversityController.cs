@@ -12,7 +12,7 @@ namespace CYYVG6_HFT_2021221.Endpoint
     [ApiController]
     public class UniversityController : ControllerBase
     {
-        IUniversityLogic ul;
+        UniversityLogic ul;
         public UniversityController(IUniversityLogic ul)
         {
             this.ul = ul;
@@ -32,11 +32,11 @@ namespace CYYVG6_HFT_2021221.Endpoint
             return ul.GetOneFaculty(id);
         }
 
-        //Post
-        //[HttpPost("{id}")]
-        //public void Post( int id, string facultyName)
-        //{
-        //    ul.ChangeFacultyName(id, facultyName);
-        //}
+       // Post
+        [HttpPost("{id}")]
+        public void Post(int id, string facultyName)
+        {
+            ul.Ins
+        }
     }
 }

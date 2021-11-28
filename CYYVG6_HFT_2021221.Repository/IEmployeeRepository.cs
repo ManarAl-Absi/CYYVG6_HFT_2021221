@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public interface IEmployeeRepository : IRepository<Employee>
+    public interface IEmployeeRepository 
     {
-        void ChangeAddress(int id, string newAddress);
-        void ChangeEmail(int id, string newEmail);
-        void ChangePosition(int id, string newPosition);
-        void ChangeEmployeeSalary(int id, int newSalary);
+        void Create(Employee employee);
+        void Delete(int id);
+        IQueryable<Employee> GetAll();
+        Employee Read(int id);
+        void Update(Employee employee);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CYYVG6_HFT_2021221.Models;
 using Microsoft.EntityFrameworkCore;
+using StudentSystem.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,75 +9,42 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
-        public EmployeeRepository(DbContext DbCntx)
-            : base(DbCntx)
+        StudentsOfObudaUniDbContext db;
+        public EmployeeRepository(StudentsOfObudaUniDbContext db)
         {
+            this.db = db;
         }
 
-        public void ChangeAddress(int id, string newAddress)
+        public void Create(Employee employee)
         {
-            var employee = this.GetOne(id);
-            if (employee == null)
-            {
-                throw new InvalidOperationException("Sorry! employee does not exist");
-            }
-            employee.Address = newAddress;
-            this.Context.SaveChanges();
+            this.db.Employees.Add(employee);
+            this.db.SaveChanges();
         }
 
-        public void ChangeEmail(int id, string newEmail)
+        public void Delete(int id)
         {
-            var employee = this.GetOne(id);
-            if (employee == null)
-            {
-                throw new InvalidOperationException("Sorry! employee does not exist");
-            }
-            employee.Email = newEmail;
-            this.Context.SaveChanges();
+            Employee emp = this.Read(id);
+            this.db.Employees.Remove(emp);
+            this.db.SaveChanges();
         }
 
-        public void ChangeEmployeeSalary(int id, int newSalary)
+        public IQueryable<Employee> GetAll()
         {
-            var employee = this.GetOne(id);
-            if (employee == null)
-            {
-                throw new InvalidOperationException("Sorry! employee does not exist");
-            }
-            employee.Salary = newSalary;
-            this.Context.SaveChanges();
+            return db.Employees;
         }
 
-        public void ChangePosition(int id, string newPosition)
+        public Employee Read(int id)
         {
-            var employee = this.GetOne(id);
-            if (employee == null)
-            {
-                throw new InvalidOperationException("Sorry! employee does not exist");
-            }
-            employee.Position = newPosition;
-            this.Context.SaveChanges();
+            return db.Employees.FirstOrDefault(f => f.EmployeeId == id);
         }
 
-        public override Employee GetOne(int id)
+        public void Update(Employee employee)
         {
-            return this.GetAll().SingleOrDefault(x => x.EmployeeId == id);
+            Employee emp = this.Read(employee.EmployeeId);
+            emp.FulName = employee.FulName;
+            this.db.SaveChanges();
         }
-
-        public override void Insert(Employee entity)
-        {
-            this.Context.Set<Employee>().Add(entity);
-            this.Context.SaveChanges();
-        }
-
-        public override void Remove(int id)
-        {
-            Employee emp = this.GetOne(id);
-            this.Context.Set<Employee>().Remove(emp);
-            this.Context.SaveChanges();
-        }
-
-        
     }
 }

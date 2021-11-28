@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public interface IFacultyRepository : IRepository<Faculty>
+    public interface IFacultyRepository 
     {
-        
-        void ChangeFacultyName(int id, string newName);
-        void changeFacultyAddress(int id, string newAdress);
+        void Create(Faculty faculty);
+        void Delete(int id);
+        IQueryable<Faculty> GetAll();
+        Faculty Read(int id);
+        void Update(Faculty faculty);
+       
     }
 }

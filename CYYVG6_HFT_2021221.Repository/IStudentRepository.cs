@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public interface IStudentRepository : IRepository<Student>
+    public interface IStudentRepository 
     {
-        void ChangeMajorWithinTheFaculty(int id, string newMajor);
-        void ChangePrice(int id, int newPrice);
+        void Create(Student student);
+        void Delete(int id);
+        IQueryable<Student> GetAll();
+        Student Read(int id);
+        void Update(Student student);
     }
 }

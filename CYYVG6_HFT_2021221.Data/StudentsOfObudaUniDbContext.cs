@@ -12,7 +12,7 @@ namespace StudentSystem.Data
     {
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Faculty> Faculties { get; set; }
-        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
 
         public StudentsOfObudaUniDbContext()
         {

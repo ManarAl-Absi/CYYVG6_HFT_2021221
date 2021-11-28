@@ -1,5 +1,6 @@
 ﻿using CYYVG6_HFT_2021221.Models;
 using Microsoft.EntityFrameworkCore;
+using StudentSystem.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,52 +9,44 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Repository
 {
-    public class FacultyRepository : Repository<Faculty>, IFacultyRepository
+    public class FacultyRepository : IFacultyRepository
     {
-        public FacultyRepository(DbContext DbCntx)
-            : base(DbCntx)
+        StudentsOfObudaUniDbContext db;
+        public FacultyRepository(StudentsOfObudaUniDbContext db)
         {
+            this.db = db;
         }
 
-        public void changeFacultyAddress(int id, string newAdress)
+        public void Create(Faculty faculty)
         {
-            var faculty = this.GetOne(id);
-            if (faculty == null)
-            {
-                throw new InvalidOperationException("Sorry! Wrong faculty");
-            }
-            faculty.FacultyAddress = newAdress;
-            this.Context.SaveChanges();
+            this.db.Faculties.Add(faculty);
+            this.db.SaveChanges();
         }
 
-        public void ChangeFacultyName(int id, string newName)
+        public void Delete(int id)
         {
-            var faculty = this.GetOne(id);
-            if (faculty == null)
-            {
-                throw new InvalidOperationException("Sorry! Wrong faculty");
-            }
-            faculty.FacultyName = newName;
-            this.Context.SaveChanges();
-
+            Faculty fac = this.Read(id);
+            this.db.Faculties.Remove(fac);
+            this.db.SaveChanges();
         }
 
-        public override Faculty GetOne(int id)
+        public IQueryable<Faculty> GetAll()
         {
-            return this.GetAll().SingleOrDefault(x =>x.FacultyId == id);
+            return db.Faculties;
         }
 
-        public override void Insert(Faculty entity)
+        public Faculty Read(int id)
         {
-            this.Context.Set<Faculty>().Add(entity);
-            this.Context.SaveChanges();
+            return db.Faculties.FirstOrDefault(f => f.FacultyId == id);
         }
 
-        public override void Remove(int id)
+        public void Update(Faculty faculty)
         {
-            Faculty fac = this.GetOne(id);
-            this.Context.Set<Faculty>().Remove(fac);
-            this.Context.SaveChanges();
+            Faculty fac = this.Read(faculty.FacultyId);
+            fac.FacultyName = faculty.FacultyName;
+            this.db.SaveChanges();
+
         }
     }
+
 }
