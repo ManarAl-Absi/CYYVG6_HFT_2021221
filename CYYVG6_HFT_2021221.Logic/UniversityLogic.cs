@@ -13,12 +13,18 @@ namespace CYYVG6_HFT_2021221.Logic
         private IStudentRepository studentRepository;
         private IEmployeeRepository employeeRepository;
         private IFacultyRepository facultyRepository;
+        private IFacultyRepository @object;
 
         public UniversityLogic(IStudentRepository studentRepository, IEmployeeRepository employeeRepository, IFacultyRepository facultyRepository)
         {
             this.studentRepository = studentRepository;
             this.employeeRepository = employeeRepository;
             this.facultyRepository = facultyRepository;
+        }
+
+        public UniversityLogic(IFacultyRepository @object)
+        {
+            this.@object = @object;
         }
 
         public void ChangeEmployeePosition(int id, string newPosition)
