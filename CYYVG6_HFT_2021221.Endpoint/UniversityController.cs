@@ -12,8 +12,8 @@ namespace CYYVG6_HFT_2021221.Endpoint
     [ApiController]
     public class UniversityController : ControllerBase
     {
-        UniversityLogic ul;
-        public UniversityController(IUniversityLogic ul)
+        IFacultyLogic ul;
+        public UniversityController(IFacultyLogic ul)
         {
             this.ul = ul;
         }
@@ -36,7 +36,7 @@ namespace CYYVG6_HFT_2021221.Endpoint
         [HttpPost("{id}")]
         public void Post(int id, string facultyName)
         {
-            ul.Ins
+         //   ul.Ins
         }
     }
 }

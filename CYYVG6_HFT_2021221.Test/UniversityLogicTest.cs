@@ -15,7 +15,7 @@ namespace CYYVG6_HFT_2021221.Test
       
         //private UniversityLogic universityLogic;
 
-        UniversityLogic ul;
+        FacultyLogic ul;
         [SetUp]
         public void doesExist()
         {
@@ -36,7 +36,7 @@ namespace CYYVG6_HFT_2021221.Test
                 }
             }.AsQueryable();
             mockFacultyRepo.Setup((f) => f.GetAll()).Returns(faculties);
-            ul = new UniversityLogic(mockFacultyRepo.Object);
+            ul = new FacultyLogic(mockFacultyRepo.Object);
 
         }
 

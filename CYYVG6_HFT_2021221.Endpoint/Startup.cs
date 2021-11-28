@@ -21,8 +21,8 @@ namespace CYYVG6_HFT_2021221.Endpoint
         {
             services.AddControllers();
 
-            services.AddTransient<IUniversityLogic, UniversityLogic>();
-            services.AddTransient<IClientLogic, ClientLogic>();
+            services.AddTransient<IFacultyLogic, FacultyLogic>();
+            services.AddTransient<IEmployeeLogic, EmployeeLogic>();
 
             services.AddTransient<IFacultyRepository, FacultyRepository>();
             services.AddTransient<IStudentRepository, StudentRepository>();
