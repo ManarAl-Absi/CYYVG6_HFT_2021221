@@ -10,21 +10,21 @@ using System.Linq;
 namespace CYYVG6_HFT_2021221.Test
 {
     [TestFixture]
-    public class UniversityLogicTest
+    public class Tester
     {
-      
-        //private UniversityLogic universityLogic;
+        FacultyLogic fl;
+        StudentLogic sl;
+        EmployeeLogic el;
 
-        FacultyLogic ul;
         [SetUp]
         public void doesExist()
         {
             var mockFacultyRepo = new Mock<IFacultyRepository>();
 
             Student fakeStudent = new Student();
-
             fakeStudent.StudentId = 1;
             fakeStudent.FulName = "Moni Loe";
+
             var faculties = new List<Faculty>()
             {
                 new Faculty()
@@ -36,29 +36,29 @@ namespace CYYVG6_HFT_2021221.Test
                 }
             }.AsQueryable();
             mockFacultyRepo.Setup((f) => f.GetAll()).Returns(faculties);
-            ul = new FacultyLogic(mockFacultyRepo.Object);
+            fl = new FacultyLogic(mockFacultyRepo.Object);
 
         }
 
         [Test]
         public void TestAVGAgeOfStudents()
         {
-            var result = ul.AVGAgeOfStudents();
-            Assert.That(result, Is.EqualTo(22));
+            var result = sl.AVGAgeOfStudents();
+            Assert.That(result, Is.EqualTo(24));
         }
 
         [Test]
         public void TestNumOfStudentInUniversit()
         {
-            var result = ul.NumOfStudentInUniversity();
-            Assert.That(result, Is.EqualTo(4000));
+            var result = sl.NumOfStudentInUniversity();
+            Assert.That(result, Is.EqualTo(4));
         }
 
 
         [Test]
         public void TestSalaryUniversityPayForAllEmp()
         {
-            var result = ul.SalaryUniversityPayForAllEmp();
+            var result = el.SalaryUniversityPayForAllEmp();
             Assert.That(result, Is.EqualTo(10800));
         }
 
@@ -66,7 +66,7 @@ namespace CYYVG6_HFT_2021221.Test
         [Test]
         public void TestMoneyUniversityEarnFromStudent()
         {
-            var result = ul.MoneyUniversityEarnFromStudent();
+            var result = sl.MoneyUniversityEarnFromStudent();
             Assert.That(result, Is.EqualTo(11100));
         }
 
@@ -74,7 +74,7 @@ namespace CYYVG6_HFT_2021221.Test
         [Test]
         public void TestHighestSalary()
         {
-            var result = ul.HighestSalary();
+            var result = el.HighestSalary();
             Assert.That(result, Is.EqualTo(5000));
         }
 
