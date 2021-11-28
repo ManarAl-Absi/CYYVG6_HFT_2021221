@@ -36,10 +36,10 @@ namespace StudentSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", Major= "Electirical Engineering", SpeaksHungarian = false, PriceToPayPerSemester = 2800 };
-            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", Major = "Computer Scince and Engineering", SpeaksHungarian = false, PriceToPayPerSemester = 3000 };
-            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", Major = "Mechanical Engineering", SpeaksHungarian = true, PriceToPayPerSemester = 2800 };
-            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", Major = "Environmental Engineering", SpeaksHungarian = true, PriceToPayPerSemester = 2500 };
+            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", Major= "Electirical Engineering", SpeaksHungarian = false, TitutionPrice = 2800 };
+            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", Major = "Computer Scince and Engineering", SpeaksHungarian = false, TitutionPrice = 3000 };
+            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", Major = "Mechanical Engineering", SpeaksHungarian = true, TitutionPrice = 2800 };
+            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", Major = "Environmental Engineering", SpeaksHungarian = true, TitutionPrice = 2500 };
 
 
             Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics", FacultyAddress = "1034 Budapest, Becsi u. 96b", StudentId=s1.StudentId };

@@ -47,6 +47,7 @@ namespace CYYVG6_HFT_2021221.Logic
             this.facultyRepository.ChangeFacultyName(id, newName);
         }
 
+       
         public void changeStudentTitutionPrice(int id, int newPrice)
         {
             this.studentRepository.ChangePrice(id, newPrice);
@@ -169,6 +170,11 @@ namespace CYYVG6_HFT_2021221.Logic
         public int MoneyUniversityEarnFromStudent()
         {
             return studentRepository.GetAll().Sum(s => s.TitutionPrice);
+        }
+
+        public int HighestSalary()
+        {
+            return employeeRepository.GetAll().Max(s => s.Salary);
         }
     }
 }

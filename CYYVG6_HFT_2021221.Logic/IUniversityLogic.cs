@@ -23,8 +23,13 @@ namespace CYYVG6_HFT_2021221.Logic
         void changeStudentTitutionPrice(int id, int newPrice);
         void changeFacultyAddress(int id, string newAdress);
         void ChangeFacultyName(int id, string newName);
+        int NumOfStudentInUniversity();
+        double AVGAgeOfStudents();
+        int SalaryUniversityPayForAllEmp();
+        int MoneyUniversityEarnFromStudent();
+        int HighestSalary();
 
-        
+
 
 
     }

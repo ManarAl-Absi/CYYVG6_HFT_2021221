@@ -43,34 +43,42 @@ namespace CYYVG6_HFT_2021221.Test
         }
 
         [Test]
-        public void TestStudentCosts()
+        public void TestAVGAgeOfStudents()
         {
-          
+            var result = ul.AVGAgeOfStudents();
+            Assert.That(result, Is.EqualTo(22));
         }
 
         [Test]
-        public void TestStudentMajor()
+        public void TestNumOfStudentInUniversit()
         {
-
+            var result = ul.NumOfStudentInUniversity();
+            Assert.That(result, Is.EqualTo(4000));
         }
 
 
         [Test]
-        public void TestEmployeeEarnings()
+        public void TestSalaryUniversityPayForAllEmp()
         {
+            var result = ul.SalaryUniversityPayForAllEmp();
+            Assert.That(result, Is.EqualTo(10800));
         }
 
-        
+
         [Test]
-        public void TestEmployeePosition()
+        public void TestMoneyUniversityEarnFromStudent()
         {
+            var result = ul.MoneyUniversityEarnFromStudent();
+            Assert.That(result, Is.EqualTo(11100));
         }
 
-        
-        [OneTimeSetUp]
-        public void CreateLogicWithMocks()
+
+        [Test]
+        public void TestHighestSalary()
         {
+            var result = ul.HighestSalary();
+            Assert.That(result, Is.EqualTo(5000));
         }
 
-        }
+    }
 }
