@@ -29,13 +29,12 @@ namespace CYYVG6_HFT_2021221.Models
         public int TitutionPrice { get; set; }
 
         [NotMapped]
-        public string MainData => $"[{StudentId}] : {FulName} : {Gender} : {Nationality} : {Major}  (Age: {Age}) (Number of faculties he or she attends: {Faculties.Count()})";
+        public string MainData => $"[{StudentId}] : {FulName} : {Gender} : {Nationality} : {Major}  (Age: {Age}) (The faculty he or she is in: {Faculty.FacultyName})";
 
-        [NotMapped]
-        public virtual ICollection<Faculty> Faculties { get; set; }
-        public Student()
-        {
-            this.Faculties = new HashSet<Faculty>();
-        }
+        public virtual Faculty Faculty { get; }
+
+        [ForeignKey(nameof(Faculty))]
+        public int FacultyId { get; set; }
+
     }
 }

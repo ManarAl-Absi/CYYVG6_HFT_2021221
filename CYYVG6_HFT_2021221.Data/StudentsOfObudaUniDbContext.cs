@@ -36,16 +36,17 @@ namespace StudentSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", Major= "Electirical Engineering", SpeaksHungarian = false, TitutionPrice = 2800 };
-            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", Major = "Computer Scince and Engineering", SpeaksHungarian = false, TitutionPrice = 3000 };
-            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", Major = "Mechanical Engineering", SpeaksHungarian = true, TitutionPrice = 2800 };
-            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", Major = "Environmental Engineering", SpeaksHungarian = true, TitutionPrice = 2500 };
+
+            Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics", FacultyAddress = "1034 Budapest, Becsi u. 96b" };
+            Faculty f1 = new Faculty() { FacultyId = 2, FacultyName = "BÁNKI DONÁT FACULTY OF MECHANICAL AND SAFETY ENGINEERING", FacultyAddress = "1081 Budapest, Nepszinhaz u. 8" };
+            Faculty f2 = new Faculty() { FacultyId = 3, FacultyName = "Rejtő Sándor Faculty of Light Industry and Environmental Engineering", FacultyAddress = "1034 Budapest, Doberdo ut 6" };
+            Faculty f3 = new Faculty() { FacultyId = 4, FacultyName = "Kandó Kálmán Faculty of Electrical Engineering", FacultyAddress = "1034 Budapest, Becsi u. 94-96" };
 
 
-            Faculty f0 = new Faculty() { FacultyId = 1, FacultyName = "John von Neumann Faculty of Informatics", FacultyAddress = "1034 Budapest, Becsi u. 96b", StudentId=s1.StudentId };
-            Faculty f1 = new Faculty() { FacultyId = 2, FacultyName = "BÁNKI DONÁT FACULTY OF MECHANICAL AND SAFETY ENGINEERING", FacultyAddress = "1081 Budapest, Nepszinhaz u. 8", StudentId = s2.StudentId };
-            Faculty f2 = new Faculty() { FacultyId = 3, FacultyName = "Rejtő Sándor Faculty of Light Industry and Environmental Engineering", FacultyAddress = "1034 Budapest, Doberdo ut 6", StudentId = s3.StudentId };
-            Faculty f3 = new Faculty() { FacultyId = 4, FacultyName = "Kandó Kálmán Faculty of Electrical Engineering", FacultyAddress = "1034 Budapest, Becsi u. 94-96", StudentId = s0.StudentId };
+            Student s0 = new Student() { StudentId = 1, FulName = "John LC", Age = 23, Nationality = "Spanish", Major = "Electirical Engineering", SpeaksHungarian = false, TitutionPrice = 2800, FacultyId = f3.FacultyId };
+            Student s1 = new Student() { StudentId = 2, FulName = "Manar Al-Absi", Age = 21, Nationality = "Yemeni", Major = "Computer Scince and Engineering", SpeaksHungarian = false, TitutionPrice = 3000, FacultyId = f0.FacultyId };
+            Student s2 = new Student() { StudentId = 3, FulName = "Attila Tomas", Age = 28, Nationality = "Hungrian", Major = "Mechanical Engineering", SpeaksHungarian = true, TitutionPrice = 2800, FacultyId = f1.FacultyId };
+            Student s3 = new Student() { StudentId = 4, FulName = "Moo Joo", Age = 24, Nationality = "Jordan", Major = "Environmental Engineering", SpeaksHungarian = true, TitutionPrice = 2500, FacultyId = f2.FacultyId };
 
 
             Employee e0 = new Employee() { EmployeeId = 1, FulName = "Klespitz Jozsef", Age = 38, Address = "1074 Budapest, Absd u. 9", FacultyId=f0.FacultyId, Email = "abcd@gmail.com", Position = "Professor", Salary = 3000 };
@@ -57,11 +58,11 @@ namespace StudentSystem.Data
 
 
 
-            modelBuilder.Entity<Faculty>(entity =>
+            modelBuilder.Entity<Student>(entity =>
             {
-                entity.HasOne(faculty => faculty.Student)
-                    .WithMany(Student => Student.Faculties)
-                    .HasForeignKey(faculty => faculty.StudentId)
+                entity.HasOne(student => student.Faculty)
+                    .WithMany(Faculty => Faculty.Students)
+                    .HasForeignKey(student => student.FacultyId)
                     .OnDelete(DeleteBehavior.SetNull);
             });
 
@@ -73,8 +74,8 @@ namespace StudentSystem.Data
                     .OnDelete(DeleteBehavior.SetNull);
             });
 
-            modelBuilder.Entity<Student>().HasData(s0, s1, s2, s3);
             modelBuilder.Entity<Faculty>().HasData(f0, f1, f2, f3);
+            modelBuilder.Entity<Student>().HasData(s0, s1, s2, s3);
             modelBuilder.Entity<Employee>().HasData(e0, e1, e2, f3);
         }
     }
