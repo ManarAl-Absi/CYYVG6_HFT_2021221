@@ -40,7 +40,7 @@ namespace CYYVG6_HFT_2021221.Test
                 },
                 new Employee()
                 {
-                    EmployeeId = 12,
+                    EmployeeId = 2,
                     FulName = " Tomas Blaha ",
                     Age = 53,
                     Address = "1074 Budapest, vwxy u. 4",
@@ -70,19 +70,27 @@ namespace CYYVG6_HFT_2021221.Test
             Assert.That(result, Is.EqualTo(6000));
         }
 
+        [TestCase(1)]
+        public void TestEmployee(int id)
+        {
+            var x = el.Read(id);
+            var y = el.Read(id);
+
+            Assert.That(x, Is.SameAs(y));
+
+
+            //this.el.Create(new Employee()
+            //{
+            //    FulName = name
+            //});
+            //Assert.That(el.GetEmployeeByID(id).FulName, Is.EqualTo(name));
+        }
+
         //[Test]
-        //public void TestReadEmployee(int id)
+        //public void TestReadEmployee()
         //{
-           
-        //    var result = el.Read(id);
-        //    // Assert.That(result.Salary, Is.EqualTo(3000));
-
-        //    var expected = new Employee
-        //    {
-        //        EmployeeId = 1
-        //    };
-        //    Assert.That(result, Is.EqualTo(expected));
-
+        //    var result = el.Read(1);
+        //    Assert.That(result.Salary, Is.EqualTo(3000));
         //}
 
     }
