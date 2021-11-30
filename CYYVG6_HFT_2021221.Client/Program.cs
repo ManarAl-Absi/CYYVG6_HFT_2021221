@@ -9,7 +9,7 @@ namespace CYYVG6_HFT_2021221.Client
         {
             System.Threading.Thread.Sleep(8000);
 
-            RestService rest = new RestService("http://localhost:54726");
+            RestService rest = new RestService("http://localhost:5000");
 
 
             rest.Post<Faculty>(new Faculty()

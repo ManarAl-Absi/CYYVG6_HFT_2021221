@@ -86,12 +86,13 @@ namespace CYYVG6_HFT_2021221.Test
             //Assert.That(el.GetEmployeeByID(id).FulName, Is.EqualTo(name));
         }
 
-        //[Test]
-        //public void TestReadEmployee()
-        //{
-        //    var result = el.Read(1);
-        //    Assert.That(result.Salary, Is.EqualTo(3000));
-        //}
+        [Test]
+        public void GetOneBlog_ReturnsCorrectInstance()
+        {
+            var result = this.el.Read(1);
+
+            Assert.That(result.Position, Is.EqualTo("Lecturer"));
+        }
 
     }
 }

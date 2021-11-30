@@ -35,7 +35,6 @@ namespace CYYVG6_HFT_2021221.Endpoint
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
