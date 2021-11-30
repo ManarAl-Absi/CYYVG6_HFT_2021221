@@ -20,10 +20,12 @@ namespace CYYVG6_HFT_2021221.Models
             public string FacultyName { get; set; }
             public string FacultyAddress { get; set; }
             public virtual ICollection<Employee> Employees { get; }
-               public virtual ICollection<Student> Students { get; }
+            public virtual ICollection<Student> Students { get; }
 
+            [NotMapped]
+            public string MainData => $"[{FacultyId}] : {FacultyName}  (Faculty Address: {FacultyAddress}) (The number of students: {Students.Count()})  (The number of employees: {Employees.Count()})";
 
-    }
+        }
 
 
 }

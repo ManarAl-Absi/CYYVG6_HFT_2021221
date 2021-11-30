@@ -28,10 +28,7 @@ namespace CYYVG6_HFT_2021221.Models
         public bool? SpeaksHungarian { get; set; }
         public int TitutionPrice { get; set; }
 
-        [NotMapped]
-        public string MainData => $"[{StudentId}] : {FulName} : {Gender} : {Nationality} : {Major}  (Age: {Age}) (The faculty he or she is in: {Faculty.FacultyName})";
-
-        public virtual Faculty Faculty { get; }
+        public virtual Faculty Faculty { get; set; }
 
         [ForeignKey(nameof(Faculty))]
         public int FacultyId { get; set; }

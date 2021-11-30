@@ -1,4 +1,5 @@
 ﻿using CYYVG6_HFT_2021221.Models;
+using CYYVG6_HFT_2021221.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace CYYVG6_HFT_2021221.Logic
 {
     public class StudentLogic : IStudentLogic
     {
-         IStudentLogic studentRepository;
+         IStudentRepository studentRepository;
 
-        public StudentLogic(IStudentLogic studentRepository)
+        public StudentLogic(IStudentRepository studentRepository)
         {
             this.studentRepository = studentRepository;
         }

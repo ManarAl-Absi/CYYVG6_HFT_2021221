@@ -23,7 +23,7 @@ namespace CYYVG6_HFT_2021221.Models
         public string Position{ get; set; }   //Professor, Lecturer, manager, Customer Service, Programmer
         public int Salary { get; set; }
 
-        public virtual Faculty Faculty { get;  }
+        public virtual Faculty Faculty { get; set; }
 
         [ForeignKey(nameof(Faculty))]
         public int FacultyId { get; set; }

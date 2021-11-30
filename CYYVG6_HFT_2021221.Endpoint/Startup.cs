@@ -23,13 +23,15 @@ namespace CYYVG6_HFT_2021221.Endpoint
 
             services.AddTransient<IFacultyLogic, FacultyLogic>();
             services.AddTransient<IEmployeeLogic, EmployeeLogic>();
+            services.AddTransient<IStudentLogic, StudentLogic>();
+
 
             services.AddTransient<IFacultyRepository, FacultyRepository>();
             services.AddTransient<IStudentRepository, StudentRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
-            services.AddTransient<StudentsOfObudaUniDbContext, StudentsOfObudaUniDbContext>();
 
+            services.AddTransient<StudentsOfObudaUniDbContext, StudentsOfObudaUniDbContext>();
 
         }
 
