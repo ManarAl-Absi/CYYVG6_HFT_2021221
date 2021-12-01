@@ -23,7 +23,7 @@ namespace CYYVG6_HFT_2021221.Models
             public virtual ICollection<Student> Students { get; }
 
             [NotMapped]
-            public string MainData => $"[{FacultyId}] : {FacultyName}  (Faculty Address: {FacultyAddress}) (The number of students: {Students.Count()})  (The number of employees: {Employees.Count()})";
+            public string MainData => $"[{FacultyId}] : {FacultyName}  (Faculty Address: {FacultyAddress})";
 
         }
 
