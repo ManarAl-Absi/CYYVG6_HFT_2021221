@@ -28,7 +28,12 @@ namespace CYYVG6_HFT_2021221.Logic
 
         public void Delete(int id)
         {
+            if (id < 0)
+            {
+                throw new ArgumentException("Invalid Employee ID");
+            }
             employeeRepository.Delete(id);
+
         }
 
         public IEnumerable<Employee> GetAll()

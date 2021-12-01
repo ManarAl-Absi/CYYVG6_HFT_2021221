@@ -71,27 +71,24 @@ namespace CYYVG6_HFT_2021221.Test
         }
 
         [TestCase(1)]
-        public void TestEmployee(int id)
+        public void TestReadEmployee(int id)
         {
             var x = el.Read(id);
             var y = el.Read(id);
 
             Assert.That(x, Is.SameAs(y));
 
-
-            //this.el.Create(new Employee()
-            //{
-            //    FulName = name
-            //});
-            //Assert.That(el.GetEmployeeByID(id).FulName, Is.EqualTo(name));
+        }
+        [Test]
+        public void TestTrowsExceptionOfEmployeeDelete()
+        {
+            Assert.That(() => el.Delete(-2), Throws.TypeOf<ArgumentException>());
         }
 
         [Test]
-        public void GetOneBlog_ReturnsCorrectInstance()
+        public void TestGetAllEmployees()
         {
-            var result = this.el.Read(1);
-
-            Assert.That(result.Position, Is.EqualTo("Lecturer"));
+            Assert.That(this.el.GetAll().Count, Is.EqualTo(2));
         }
 
     }

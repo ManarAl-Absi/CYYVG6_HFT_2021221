@@ -65,11 +65,27 @@ namespace CYYVG6_HFT_2021221.Test
             var result = sl.MoneyUniversityEarnFromStudent();
             Assert.That(result, Is.EqualTo(2000));
         }
+
+        
         [Test]
-        public void TestRead()
+        public void TestTrowsExceptionOfStudentDelete()
         {
-            var result = sl.Read(1);
-            Assert.That(result.Age, Is.AtMost(27));
+            Assert.That(() => sl.Delete(-2), Throws.TypeOf<ArgumentException>());
+        }
+
+        [TestCase(1)]
+        public void TestReadStudent(int id)
+        {
+            var x = sl.Read(id);
+            var y = sl.Read(id);
+
+            Assert.That(x, Is.SameAs(y));
+        }
+
+        [Test]
+        public void TestGetAllStudents()
+        {
+            Assert.That(this.sl.GetAll().Count, Is.EqualTo(1));
         }
 
 
