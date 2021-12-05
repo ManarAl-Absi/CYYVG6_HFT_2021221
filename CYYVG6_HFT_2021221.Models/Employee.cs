@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CYYVG6_HFT_2021221.Models
 {
-    [Table("Locations")]
+    [Table("Emlpoyees")]
     public class Employee
     {
         [Key]

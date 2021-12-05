@@ -63,7 +63,7 @@ namespace StudentSystem.Data
                 entity.HasOne(student => student.Faculty)
                     .WithMany(Faculty => Faculty.Students)
                     .HasForeignKey(student => student.FacultyId)
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -71,12 +71,12 @@ namespace StudentSystem.Data
                 entity.HasOne(employee => employee.Faculty)
                     .WithMany(Faculty => Faculty.Employees)
                     .HasForeignKey(employee => employee.FacultyId)
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Faculty>().HasData(f0, f1, f2, f3);
             modelBuilder.Entity<Student>().HasData(s0, s1, s2, s3);
-            modelBuilder.Entity<Employee>().HasData(e0, e1, e2, f3);
+            modelBuilder.Entity<Employee>().HasData(e0, e1, e2, e3);
         }
     }
 }
