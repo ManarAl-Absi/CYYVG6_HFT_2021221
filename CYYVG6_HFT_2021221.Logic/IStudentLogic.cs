@@ -14,8 +14,8 @@ namespace CYYVG6_HFT_2021221.Logic
         IEnumerable<Student> GetAll();
         Student Read(int id);
         void Update(Student student);
-        int NumOfStudentInUniversity();
-        double AVGAgeOfStudents();
-        int MoneyUniversityEarnFromStudent();
+        //int NumOfStudentInUniversity();
+        //double AVGAgeOfStudents();
+        //int MoneyUniversityEarnFromStudent();
     }
 }

@@ -14,5 +14,11 @@ namespace CYYVG6_HFT_2021221.Logic
         IEnumerable<Faculty> GetAll();
         Faculty Read(int id);
         void Update(Faculty faculty);
+        Faculty FacultyOfStudent(int id);
+        Faculty FacultyPaysHighestSalary();
+        Faculty FacultyPaysLowestSalary();
+        Employee SupervisorOfAStudent(int id);
+        IList<FacultyEarningsResult> FacultyEarnings();
     }
+
 }

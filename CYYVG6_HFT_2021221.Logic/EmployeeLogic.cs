@@ -41,9 +41,9 @@ namespace CYYVG6_HFT_2021221.Logic
             return employeeRepository.GetAll();
         }
 
-        public int HighestSalary()
+        public void Update(Employee employee)
         {
-            return employeeRepository.GetAll().Max(s => s.Salary);
+            employeeRepository.Update(employee);
         }
 
         public Employee Read(int id)
@@ -51,15 +51,16 @@ namespace CYYVG6_HFT_2021221.Logic
             return employeeRepository.Read(id);
         }
 
-        public int SalaryUniversityPayForAllEmp()
-        {
-            return employeeRepository.GetAll().Sum(s => s.Salary);
-        }
+        //public int SalaryUniversityPayForAllEmp()
+        //{
+        //    return employeeRepository.GetAll().Sum(s => s.Salary);
+        //}
 
-        public void Update(Employee employee)
-        {
-            employeeRepository.Update(employee);
-        }
+        //public int HighestSalary()
+        //{
+        //    return employeeRepository.GetAll().Max(s => s.Salary);
+        //}
+       
         
     }
 }

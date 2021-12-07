@@ -52,7 +52,7 @@ namespace StudentSystem.Data
             Employee e0 = new Employee() { EmployeeId = 1, FulName = "Klespitz Jozsef", Age = 38, Address = "1074 Budapest, Absd u. 9", FacultyId=f0.FacultyId, Email = "abcd@gmail.com", Position = "Professor", Salary = 3000 };
             Employee e1 = new Employee() { EmployeeId = 2, FulName = "Kristina Petrovikj", Age= 25, Address= "1066 Budapest, Efgh u. 6", FacultyId = f3.FacultyId, Email = "efgh@gmail.com", Position = "Lecturer", Salary = 1000 };
             Employee e2 = new Employee() { EmployeeId = 3, FulName = "Siklosi daniel", Age = 30, Address = "1081 Budapest, Ijkl u. 8", FacultyId = f1.FacultyId, Email = "ijkl@gmail.com", Position = "Programmer",Salary = 1800};
-            Employee e3 = new Employee() { EmployeeId = 4, FulName = "Borbas Laszlo", Age = 51, Address = "1034 Budapest, Mnop ut 67", FacultyId = f2.FacultyId, Email = "mnop@gmail.com", Position = "Manager", Salary = 5000};
+            Employee e3 = new Employee() { EmployeeId = 4, FulName = "Borbas Laszlo", Age = 51, Address = "1034 Budapest, Mnop ut 67", FacultyId = f2.FacultyId, Email = "mnop@gmail.com", Position = "Supervisor", Salary = 5000};
 
 
 

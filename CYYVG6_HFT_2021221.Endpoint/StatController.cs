@@ -1,4 +1,5 @@
 using CYYVG6_HFT_2021221.Logic;
+using CYYVG6_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,49 +12,47 @@ namespace CarDB.Endpoint.Controllers
     [ApiController]
     public class StatController : ControllerBase
     {
-        IStudentLogic sl;
-        IEmployeeLogic el;
+        IFacultyLogic fl;
 
-        public StatController(IStudentLogic sl, IEmployeeLogic el)
+        public StatController(IFacultyLogic fl)
         {
-            this.sl = sl;
-            this.el = el;
+            this.fl = fl;
         }
 
 
-        // GET: stat/highestsalary
+        // GET: stat/facultyofstudent
         [HttpGet]
-        public int HighestSalary()
+        public Faculty FacultyOfStudent(int id)
         {
-            return el.HighestSalary();
+            return fl.FacultyOfStudent(id);
         }
 
-        // GET: stat/salaryuniversitypayforallemp
+        // GET: stat/facultypayshighestsalary
         [HttpGet]
-        public int SalaryUniversityPayForAllEmp()
+        public Faculty FacultyPaysHighestSalary()
         {
-            return el.SalaryUniversityPayForAllEmp();
+            return fl.FacultyPaysHighestSalary();
         }
 
-        // GET: stat/avgageofstudents
+        // GET: stat/facultypayslowestsalary
         [HttpGet]
-        public double AVGAgeOfStudents()
+        public Faculty FacultyPaysLowestSalary()
         {
-            return sl.AVGAgeOfStudents();
+            return fl.FacultyPaysLowestSalary();
         }
 
-        // GET: stat/numofstudeniIuUniversity
+        // GET: stat/supervisorofastudent
         [HttpGet]
-        public int NumOfStudentInUniversity()
+        public Employee SupervisorOfAStudent(int id)
         {
-            return sl.NumOfStudentInUniversity();
+            return fl.SupervisorOfAStudent(id);
         }
 
-        // GET: stat/moneyuniversityearnfromstudent
+        // GET: stat/facultyearnings
         [HttpGet]
-        public int MoneyUniversityEarnFromStudent()
+        public IList<FacultyEarningsResult> FacultyEarnings()
         {
-            return sl.MoneyUniversityEarnFromStudent();
+            return fl.FacultyEarnings();
         }
 
 
