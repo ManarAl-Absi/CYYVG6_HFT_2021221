@@ -13,7 +13,11 @@ namespace CYYVG6_HFT_2021221.Logic
          IFacultyRepository facultyRepository;
         IStudentRepository studentRepository;
         IEmployeeRepository employeeRepository;
+        public FacultyLogic(IFacultyRepository facultyRepository)
+        {
+            this.facultyRepository = facultyRepository;
 
+        }
         public FacultyLogic(IFacultyRepository facultyRepository, IStudentRepository studentRepository, IEmployeeRepository employeeRepository)
         {
             this.facultyRepository = facultyRepository;
@@ -87,6 +91,7 @@ namespace CYYVG6_HFT_2021221.Logic
                 .FirstOrDefault();
             return emp;
         }
+      
 
         public IList<FacultyEarningsResult> FacultyEarnings()
         {

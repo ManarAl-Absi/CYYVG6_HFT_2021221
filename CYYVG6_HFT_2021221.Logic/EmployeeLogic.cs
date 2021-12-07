@@ -51,16 +51,16 @@ namespace CYYVG6_HFT_2021221.Logic
             return employeeRepository.Read(id);
         }
 
-        //public int SalaryUniversityPayForAllEmp()
-        //{
-        //    return employeeRepository.GetAll().Sum(s => s.Salary);
-        //}
+        public int SalaryUniversityPayForAllEmp()
+        {
+            return employeeRepository.GetAll().Sum(s => s.Salary);
+        }
 
-        //public int HighestSalary()
-        //{
-        //    return employeeRepository.GetAll().Max(s => s.Salary);
-        //}
-       
-        
+        public int HighestSalary()
+        {
+            return employeeRepository.GetAll().Max(s => s.Salary);
+        }
+
+
     }
 }

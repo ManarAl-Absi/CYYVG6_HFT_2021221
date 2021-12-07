@@ -66,7 +66,7 @@ namespace CYYVG6_HFT_2021221.Test
             Assert.That(result, Is.EqualTo(2000));
         }
 
-        
+
         [Test]
         public void TestTrowsExceptionOfStudentDelete()
         {

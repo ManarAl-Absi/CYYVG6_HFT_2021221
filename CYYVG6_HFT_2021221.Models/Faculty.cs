@@ -19,10 +19,10 @@ namespace CYYVG6_HFT_2021221.Models
             [MaxLength(100)]
             public string FacultyName { get; set; }
             public string FacultyAddress { get; set; }
-            public virtual ICollection<Employee> Employees { get; }
-            public virtual ICollection<Student> Students { get; }
+            public virtual ICollection<Employee> Employees { get; set; }
+            public virtual ICollection<Student> Students { get; set; }
 
-            [NotMapped]
+           [NotMapped]
             public string MainData => $"[{FacultyId}] : {FacultyName}  (Faculty Address: {FacultyAddress})";
 
         }

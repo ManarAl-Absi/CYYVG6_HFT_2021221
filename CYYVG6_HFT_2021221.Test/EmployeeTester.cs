@@ -14,7 +14,7 @@ namespace CYYVG6_HFT_2021221.Test
     [TestFixture]
     public class EmployeeTester
     {
-        EmployeeLogic el;
+       EmployeeLogic el;
 
         [SetUp]
         public void Init()
@@ -23,32 +23,30 @@ namespace CYYVG6_HFT_2021221.Test
 
             Faculty fakeFaculty = new Faculty();
             fakeFaculty.FacultyId = 1;
-            fakeFaculty.FacultyName = "Deak Faculty of Business";
+            fakeFaculty.FacultyName = "Keleti Faculty of Economics";
 
             var employees = new List<Employee>()
             {
                 new Employee()
                 {
                     EmployeeId = 1,
-                    FulName = "Bari Attila",
-                    Age = 30,
-                    Address = "1074 Budapest, opqr u. 2",
-                    Email = "opqt@gmail.com",
-                    Position = "Lecturer",
-                    Salary = 3000,
-                    Faculty = fakeFaculty
+                    FulName = "John Tomas",
+                    Age = 51,
+                    Address = "1032 Budapest, Hun u. 6",
+                    Email = "john@gmail.com",
+                    Position = "Professor",
+                    Salary = 6000
                 },
-                new Employee()
+                 new Employee()
                 {
                     EmployeeId = 2,
-                    FulName = " Tomas Blaha ",
-                    Age = 53,
-                    Address = "1074 Budapest, vwxy u. 4",
-                    Email = "vwxy@gmail.com",
-                    Position = "Professor",
-                    Salary = 6000,
-                    Faculty = fakeFaculty
-                }
+                    FulName = "Joe Foe",
+                    Age = 31,
+                    Address = "1052 Budapest, Milla u. 4",
+                    Email = "joefoe@gmail.com",
+                    Position = "Lecturer",
+                    Salary = 4000
+                 }
             }.AsQueryable();
             mockEmployeeRepo.Setup((e) => e.GetAll()).Returns(employees);
             el = new EmployeeLogic(mockEmployeeRepo.Object);
@@ -56,10 +54,10 @@ namespace CYYVG6_HFT_2021221.Test
         }
 
         [Test]
-        public void TestSalaryUniversityPayForAllEmp()
+        public void SalaryUniversityPayForAllEmp()
         {
             var result = el.SalaryUniversityPayForAllEmp();
-            Assert.That(result, Is.EqualTo(9000));
+            Assert.That(result, Is.EqualTo(10000));
         }
 
 

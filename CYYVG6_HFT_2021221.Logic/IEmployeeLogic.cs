@@ -14,7 +14,7 @@ namespace CYYVG6_HFT_2021221.Logic
         IEnumerable<Employee> GetAll();
         Employee Read(int id);
         void Update(Employee employee);
-        //int SalaryUniversityPayForAllEmp();
-        //int HighestSalary();
+        int SalaryUniversityPayForAllEmp();
+        int HighestSalary();
     }
 }
