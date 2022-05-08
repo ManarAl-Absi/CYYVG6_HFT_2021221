@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,28 @@ namespace CYYVG6_HFT_2021221.Client
     {
         HttpClient client;
 
-        public RestService(string baseurl)
+        public RestService(string baseurl, string pingableEndpoint = "swagger")
         {
+            bool isOk = false;
+            do
+            {
+                isOk = Ping(baseurl + pingableEndpoint);
+            } while (isOk == false);
             Init(baseurl);
+        }
+
+        private bool Ping(string url)
+        {
+            try
+            {
+                WebClient wc = new WebClient();
+                wc.DownloadData(url);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void Init(string baseurl)
@@ -43,6 +63,11 @@ namespace CYYVG6_HFT_2021221.Client
             {
                 items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
             }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
             return items;
         }
 
@@ -53,6 +78,11 @@ namespace CYYVG6_HFT_2021221.Client
             if (response.IsSuccessStatusCode)
             {
                 item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
             }
             return item;
         }
@@ -65,6 +95,11 @@ namespace CYYVG6_HFT_2021221.Client
             {
                 item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
             }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
             return item;
         }
 
@@ -72,7 +107,11 @@ namespace CYYVG6_HFT_2021221.Client
         {
             HttpResponseMessage response =
                 client.PostAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
-
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
             response.EnsureSuccessStatusCode();
         }
 
@@ -80,6 +119,12 @@ namespace CYYVG6_HFT_2021221.Client
         {
             HttpResponseMessage response =
                 client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
+           
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
 
             response.EnsureSuccessStatusCode();
         }
@@ -89,8 +134,22 @@ namespace CYYVG6_HFT_2021221.Client
             HttpResponseMessage response =
                 client.PutAsJsonAsync(endpoint, item).GetAwaiter().GetResult();
 
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
 
             response.EnsureSuccessStatusCode();
+        }
+
+        public class RestExceptionInfo
+        {
+            public RestExceptionInfo()
+            {
+
+            }
+            public string Msg { get; set; }
         }
     }
 }

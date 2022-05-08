@@ -42,7 +42,12 @@ namespace CYYVG6_HFT_2021221.Logic
 
         public Student Read(int id)
         {
-            return studentRepository.Read(id);
+            var stud = this.studentRepository.Read(id);
+            if (stud == null)
+            {
+                throw new ArgumentException("Student does not exists");
+            }
+            return stud;
         }
 
         public void Update(Student student)

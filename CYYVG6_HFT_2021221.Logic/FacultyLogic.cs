@@ -41,11 +41,16 @@ namespace CYYVG6_HFT_2021221.Logic
 
         public IEnumerable<Faculty> GetAll()
         {
-            return facultyRepository.GetAll();
+            return this.facultyRepository.GetAll();
         }
         public Faculty Read(int id)
         {
-            return facultyRepository.Read(id);
+            var fac = this.facultyRepository.Read(id);
+            if (fac == null)
+            {
+                throw new ArgumentException("Faculty does not exists");
+            }
+            return fac;
         }
 
         public void Update(Faculty faculty)

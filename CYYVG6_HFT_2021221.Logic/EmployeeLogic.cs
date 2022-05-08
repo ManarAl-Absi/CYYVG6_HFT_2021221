@@ -48,7 +48,12 @@ namespace CYYVG6_HFT_2021221.Logic
 
         public Employee Read(int id)
         {
-            return employeeRepository.Read(id);
+            var emp = this.employeeRepository.Read(id);
+            if (emp == null)
+            {
+                throw new ArgumentException("Employee does not exists");
+            }
+            return emp;
         }
 
         public int SalaryUniversityPayForAllEmp()

@@ -21,7 +21,7 @@ namespace CarDB.Endpoint.Controllers
 
 
         // GET: stat/facultyofstudent
-        [HttpGet]
+        [HttpGet("{id}")]
         public Faculty FacultyOfStudent(int id)
         {
             return fl.FacultyOfStudent(id);
@@ -42,7 +42,7 @@ namespace CarDB.Endpoint.Controllers
         }
 
         // GET: stat/supervisorofastudent
-        [HttpGet]
+        [HttpGet("{id}")]
         public Employee SupervisorOfAStudent(int id)
         {
             return fl.SupervisorOfAStudent(id);
