@@ -20,35 +20,35 @@ namespace CYYVG6_HFT_2021221.Endpoint
         [HttpGet]
         public IEnumerable<Faculty> Get()
         {
-            return fl.GetAll();
+            return this.fl.GetAll();
         }
 
         //Get One From ID
         [HttpGet("{id}")]
         public Faculty Get(int id)
         {
-            return fl.Read(id);
+            return this.fl.Read(id);
         }
 
        // Post
         [HttpPost]
         public void Post([FromBody] Faculty faculty)
         {
-            fl.Create(faculty);
+            this.fl.Create(faculty);
         }
 
         // Put
         [HttpPut]
         public void Put([FromBody] Faculty faculty)
         {
-            fl.Update(faculty);
+            this.fl.Update(faculty);
         }
 
         // Delete
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            fl.Delete(id);
+            this.fl.Delete(id);
         }
     }
 }

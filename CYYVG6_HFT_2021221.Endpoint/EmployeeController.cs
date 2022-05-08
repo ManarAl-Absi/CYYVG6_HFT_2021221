@@ -20,35 +20,35 @@ namespace CYYVG6_HFT_2021221.Endpoint
         [HttpGet]
         public IEnumerable<Employee> Get()
         {
-            return el.GetAll();
+            return this.el.GetAll();
         }
 
         //Get One From ID
         [HttpGet("{id}")]
         public Employee Get(int id)
         {
-            return el.Read(id);
+            return this.el.Read(id);
         }
 
         // Post
         [HttpPost]
         public void Post([FromBody] Employee employee)
         {
-            el.Create(employee);
+            this.el.Create(employee);
         }
 
         // Put
         [HttpPut]
         public void Put([FromBody] Employee employee)
         {
-            el.Update(employee);
+            this.el.Update(employee);
         }
 
         // Delete
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            el.Delete(id);
+            this.el.Delete(id);
         }
     }
 }

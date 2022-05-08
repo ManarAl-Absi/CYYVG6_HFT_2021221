@@ -14,8 +14,7 @@ namespace CYYVG6_HFT_2021221.Client
         static RestService rest;
         public static void Main(string[] args)
         {
-<<<<<<< HEAD
-            rest = new RestService("http://localhost:47153", "student");
+            rest = new RestService("http://localhost:47153", "university");
 
             //StudentsOfObudaUniDbContext context = new StudentsOfObudaUniDbContext();
             //EmployeeRepository employeeRepository = new EmployeeRepository(context);
@@ -51,112 +50,45 @@ namespace CYYVG6_HFT_2021221.Client
                .Add("==> GET ONE STUDENT BY ID", () => GetOne("Student"))
                .Add("==> GET ONE EMPLOYEE BY ID", () => GetOne("Employee"))
                .Add("==> GET ONE FACULTY BY ID", () => GetOne("Faculty"))
-=======
-            MenuMethods menuMethods = new MenuMethods();
-
-            var subMenuCreate = new ConsoleMenu(args, level: 1)
-            .Add("==> ADD A NEW STUDENT", () => menuMethods.AddNewStudent())
-            .Add("==> ADD A NEW EMPLOYEE", () => menuMethods.AddNewEmployee())
-            .Add("==> ADD A NEW FACULTY", () => menuMethods.AddNewFaculty())
-            .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
-            .Configure(config =>
-            {
-                config.Selector = "--> ";
-                config.EnableFilter = true;
-                config.Title = "Submenu";
-                config.EnableBreadcrumb = true;
-                config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
-            });
-
-             var subMenuList = new ConsoleMenu(args, level: 1)
-             .Add("==> LIST ALL STUDENTS", () => menuMethods.ListAllStudents())
-             .Add("==> LIST ALL EMPLOYEES", () => menuMethods.ListAllEmployees())
-             .Add("==> LIST ALL FACULTIES", () => menuMethods.ListAllFaculties())
-             .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
-             .Configure(config =>
-             {
-                 config.Selector = "--> ";
-                 config.EnableFilter = true;
-                 config.Title = "Submenu";
-                 config.EnableBreadcrumb = true;
-                 config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
-             });
-
-            var subMenuGetBy = new ConsoleMenu(args, level: 1)
-               .Add("==> GET ONE STUDENT BY ID", () => menuMethods.GetOneStudent())
-               .Add("==> GET ONE EMPLOYEE BY ID", () => menuMethods.GetOneEmployee())
-               .Add("==> GET ONE FACULTY BY ID", () => menuMethods.GetOneFaculty())
->>>>>>> 0aaba01659c8fd8c0be171a9e98a4292dc0da318
                .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
                .Configure(config =>
                {
                    config.Selector = "--> ";
-                   config.EnableFilter = true;
-                   config.Title = "Submenu";
-                   config.EnableBreadcrumb = true;
-                   config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
+                   config.SelectedItemBackgroundColor = ConsoleColor.Blue;
                });
 
-<<<<<<< HEAD
             var subMenuListRead = new ConsoleMenu(args, level: 2)
-=======
-            var subMenuListRead = new ConsoleMenu(args, level: 1)
->>>>>>> 0aaba01659c8fd8c0be171a9e98a4292dc0da318
                .Add("==> LIST ALL", () => subMenuList.Show())
                .Add("==> GET ONE BY ID", () => subMenuGetBy.Show())
                .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
                .Configure(config =>
                {
                    config.Selector = "--> ";
-                   config.EnableFilter = true;
-                   config.Title = "Submenu";
-                   config.EnableBreadcrumb = true;
-                   config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
+                   config.SelectedItemBackgroundColor = ConsoleColor.Blue;
                });
 
-<<<<<<< HEAD
             var subMenuUpdate = new ConsoleMenu(args, level: 2)
                .Add("==> CHANGE STUDENT MAJOR", () => Update("Student"))
                .Add("==> CHANGE EMPLOYEE EMAIL", () => Update("Employee"))
                .Add("==> CHANGE FACULTY ADDRESS", () => Update("Faculty"))
-=======
-            var subMenuUpdate = new ConsoleMenu(args, level: 1)
-               .Add("==> CHANGE STUDENT ID", () => menuMethods.ChangeStudentId())
-               .Add("==> CHANGE EMPLOYEE EMAIL", () => menuMethods.ChangeEmployeeEmail())
-               .Add("==> CHANGE FACULTY ADDRESS", () => menuMethods.ChangeFacultyAddress())
->>>>>>> 0aaba01659c8fd8c0be171a9e98a4292dc0da318
                .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
                .Configure(config =>
                {
                    config.Selector = "--> ";
-                   config.EnableFilter = true;
-                   config.Title = "Submenu";
-                   config.EnableBreadcrumb = true;
-                   config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
+                   config.SelectedItemBackgroundColor = ConsoleColor.Blue;
                });
 
-<<<<<<< HEAD
             var subMenuDelete = new ConsoleMenu(args, level: 2)
                 .Add("==> DELETE STUDENT", () => Delete("Student"))
                 .Add("==> DELETE EMPLOYEE", () => Delete("Employee"))
                 .Add("==> DELETE FACULTY", () => Delete("Faculty"))
-=======
-            var subMenuDelete = new ConsoleMenu(args, level: 1)
-                .Add("==> DELETE STUDENT", () => menuMethods.DeleteStudent())
-                .Add("==> DELETE EMPLOYEE", () => menuMethods.DeleteEmployee())
-                .Add("==> DELETE FACULTY", () => menuMethods.DeleteFaculty())
->>>>>>> 0aaba01659c8fd8c0be171a9e98a4292dc0da318
                 .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
                 .Configure(config =>
                 {
                     config.Selector = "--> ";
-                    config.EnableFilter = true;
-                    config.Title = "Submenu";
-                    config.EnableBreadcrumb = true;
-                    config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
+                    config.SelectedItemBackgroundColor = ConsoleColor.Blue;
                 });
 
-<<<<<<< HEAD
             //var subMenuNonCrud = new ConsoleMenu(args, level: 2)
             //    .Add("==> QUERY1 - THE NUMBER OF STUDENTS IN THE UNIVERSITY", () => NumberOfStudentInUniversity(studentLogic))
             //    .Add("==> QUERY2 - THE MONEY UNIVERSITY PAY TO EMPLOYEES", () => OutcomeOfUniToEmployee(employeeLogic))
@@ -174,58 +106,24 @@ namespace CYYVG6_HFT_2021221.Client
             .Add("==> U - UPDATE", () => subMenuUpdate.Show())
             .Add("==> D - DELETE", () => subMenuDelete.Show())
             //.Add("==> NON-CRUD - QUERIES", () => subMenuNonCrud.Show())
-=======
-            var subMenuNonCrud = new ConsoleMenu(args, level: 1)
-                .Add("==> QUERY1 - THE FACULTY OF A STUDENT", () => menuMethods.FacultyOfStudent())
-                .Add("==> QUERY2 - THE FACULTY THAT PAYS THE MOST", () => menuMethods.FacultyPaysHighestSalary())
-                .Add("==> QUERY3 - THE SUPERVISOR OF A STUDENT", () => menuMethods.SupervisorOfAStudent())
-                .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
-                .Configure(config =>
-                {
-                    config.Selector = "--> ";
-                    config.EnableFilter = true;
-                    config.Title = "Submenu";
-                    config.EnableBreadcrumb = true;
-                    config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
-                });
-
-            var subMenuUniversity = new ConsoleMenu()
-            .Add("==>  CREATE", () => subMenuCreate.Show())
-            .Add("==>  READ", () => subMenuListRead.Show())
-            .Add("==>  UPDATE", () => subMenuUpdate.Show())
-            .Add("==>  DELETE", () => subMenuDelete.Show())
-            .Add("==>  NON-CRUD - QUERIES", () => subMenuNonCrud.Show())
->>>>>>> 0aaba01659c8fd8c0be171a9e98a4292dc0da318
             .Add("==> GO BACK TO MENU", ConsoleMenu.Close)
             .Configure(config =>
             {
                 config.Selector = "--> ";
-                config.EnableFilter = true;
-                config.Title = "University Menu";
-                config.EnableWriteTitle = true;
-                config.EnableBreadcrumb = true;
+                config.SelectedItemBackgroundColor = ConsoleColor.Blue;
             });
 
 
-<<<<<<< HEAD
             var menu = new ConsoleMenu(args, level: 0)
               .Add("==> ENTER AS A VISITOR ", () => subMenuUniversity.Show())
-=======
-            var menu = new ConsoleMenu()
-              .Add("==> Continue", () => subMenuUniversity.Show())
->>>>>>> 0aaba01659c8fd8c0be171a9e98a4292dc0da318
               .Add("==> EXIT", ConsoleMenu.Close)
               .Configure(config =>
               {
                   config.Selector = "--> ";
-                  config.EnableFilter = true;
-                  config.Title = "Main Menu";
-                  config.EnableWriteTitle = true;
-                  config.EnableBreadcrumb = true;
+                  config.SelectedItemBackgroundColor = ConsoleColor.Blue;
               });
 
             menu.Show();
-<<<<<<< HEAD
 
 
         }
@@ -486,10 +384,6 @@ namespace CYYVG6_HFT_2021221.Client
 
         //    Console.ReadLine();
         //}
-
-=======
-        }
->>>>>>> 0aaba01659c8fd8c0be171a9e98a4292dc0da318
 
     }
 }
