@@ -54,7 +54,10 @@ namespace CYYVG6_HFT_2021221.Client
                .Configure(config =>
                {
                    config.Selector = "--> ";
-                   config.SelectedItemBackgroundColor = ConsoleColor.Blue;
+                   config.EnableFilter = true;
+                   config.Title = "Submenu";
+                   config.EnableBreadcrumb = true;
+                   config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
                });
 
             var subMenuListRead = new ConsoleMenu(args, level: 2)
@@ -64,7 +67,10 @@ namespace CYYVG6_HFT_2021221.Client
                .Configure(config =>
                {
                    config.Selector = "--> ";
-                   config.SelectedItemBackgroundColor = ConsoleColor.Blue;
+                   config.EnableFilter = true;
+                   config.Title = "Submenu";
+                   config.EnableBreadcrumb = true;
+                   config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
                });
 
             var subMenuUpdate = new ConsoleMenu(args, level: 2)
@@ -75,7 +81,10 @@ namespace CYYVG6_HFT_2021221.Client
                .Configure(config =>
                {
                    config.Selector = "--> ";
-                   config.SelectedItemBackgroundColor = ConsoleColor.Blue;
+                   config.EnableFilter = true;
+                   config.Title = "Submenu";
+                   config.EnableBreadcrumb = true;
+                   config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
                });
 
             var subMenuDelete = new ConsoleMenu(args, level: 2)
@@ -86,7 +95,10 @@ namespace CYYVG6_HFT_2021221.Client
                 .Configure(config =>
                 {
                     config.Selector = "--> ";
-                    config.SelectedItemBackgroundColor = ConsoleColor.Blue;
+                    config.EnableFilter = true;
+                    config.Title = "Submenu";
+                    config.EnableBreadcrumb = true;
+                    config.WriteBreadcrumbAction = t => Console.WriteLine(string.Join(" / ", t));
                 });
 
             //var subMenuNonCrud = new ConsoleMenu(args, level: 2)
@@ -110,7 +122,10 @@ namespace CYYVG6_HFT_2021221.Client
             .Configure(config =>
             {
                 config.Selector = "--> ";
-                config.SelectedItemBackgroundColor = ConsoleColor.Blue;
+                config.EnableFilter = true;
+                config.Title = "University Menu";
+                config.EnableWriteTitle = true;
+                config.EnableBreadcrumb = true;
             });
 
 
@@ -120,7 +135,10 @@ namespace CYYVG6_HFT_2021221.Client
               .Configure(config =>
               {
                   config.Selector = "--> ";
-                  config.SelectedItemBackgroundColor = ConsoleColor.Blue;
+                  config.EnableFilter = true;
+                  config.Title = "Main Menu";
+                  config.EnableWriteTitle = true;
+                  config.EnableBreadcrumb = true;
               });
 
             menu.Show();
