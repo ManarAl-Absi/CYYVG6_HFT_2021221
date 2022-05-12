@@ -42,9 +42,19 @@ namespace CYYVG6_HFT_2021221.Repository
 
         public void Update(Employee employee)
         {
-            Employee emp = this.Read(employee.EmployeeId);
-            emp.FulName = employee.FulName;
-            this.db.SaveChanges();
+            var old = Read(employee.EmployeeId);
+            if (old == null)
+            {
+                throw new ArgumentException("Employee not exist..");
+            }
+            foreach (var prop in old.GetType().GetProperties())
+            {
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(employee));
+                }
+            }
+            db.SaveChanges();
         }
     }
 }

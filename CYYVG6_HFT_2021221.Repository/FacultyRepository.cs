@@ -42,9 +42,19 @@ namespace CYYVG6_HFT_2021221.Repository
 
         public void Update(Faculty faculty)
         {
-            Faculty fac = this.Read(faculty.FacultyId);
-            fac.FacultyName = faculty.FacultyName;
-            this.db.SaveChanges();
+            var old = Read(faculty.FacultyId);
+            if (old == null)
+            {
+                throw new ArgumentException("Faculty not exist..");
+            }
+            foreach (var prop in old.GetType().GetProperties())
+            {
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(faculty));
+                }
+            }
+            db.SaveChanges();
 
         }
     }

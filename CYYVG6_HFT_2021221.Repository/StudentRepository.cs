@@ -42,9 +42,19 @@ namespace CYYVG6_HFT_2021221.Repository
 
         public void Update(Student student)
         {
-            Student stud = this.Read(student.StudentId);
-            stud.FulName = student.FulName;
-            this.db.SaveChanges();
+            var old = Read(student.StudentId);
+            if (old == null)
+            {
+                throw new ArgumentException("Student not exist..");
+            }
+            foreach (var prop in old.GetType().GetProperties())
+            {
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(student));
+                }
+            }
+            db.SaveChanges();
         }
     }
 }
