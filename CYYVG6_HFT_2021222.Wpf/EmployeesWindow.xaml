@@ -23,11 +23,17 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10" />
+            <Label Content="Name" Background="LightBlue" Padding="5" />
             <TextBox Text="{Binding SelectedEmployee.FulName}" Padding="10" Margin="0,0,0,30" />
-            <Button Content="Create Employee" Command="{Binding CreateEmployeeCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Employee" Command="{Binding DeleteEmployeeCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Employee" Command="{Binding UpdateEmployeeCommand}" Margin="10" Padding="10" />
+            
+            <Label Content="Faculty ID" Background="LightBlue" Padding="5" />
+            <TextBox Text="{Binding SelectedEmployee.FacultyId}" Padding="10" Margin="0,0,0,30" />
+            
+            <Button Content="Create Employee" Command="{Binding CreateEmployeeCommand}" Margin="10" Padding="5" />
+            <Button Content="Delete Employee" Command="{Binding DeleteEmployeeCommand}" Margin="10" Padding="5" />
+            <Button Content="Update Employee" Command="{Binding UpdateEmployeeCommand}" Margin="10" Padding="5" />
+            <Button Content="Get Position of Employee" Command="{Binding SelectedEmployee.Position}" Margin="10" Padding="5" />
+            <Button Content="Get Contact info of Employee" Command="{Binding SelectedEmployee.Email}" Margin="10" Padding="5" />
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>

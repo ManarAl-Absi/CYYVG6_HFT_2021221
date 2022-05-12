@@ -23,11 +23,17 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10" />
+            <Label Content="Name" Background="LightBlue" Padding="5" />
             <TextBox Text="{Binding SelectedStudent.FulName}" Padding="10" Margin="0,0,0,30" />
-            <Button Content="Create Student" Command="{Binding CreateStudentCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Student" Command="{Binding DeleteStudentCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Student" Command="{Binding UpdateStudentCommand}" Margin="10" Padding="10" />
+            <Label Content="Faculty ID" Background="LightBlue" Padding="5" />
+            <TextBox Text="{Binding SelectedStudent.FacultyId}" Padding="10" Margin="0,0,0,30" />
+
+            <Button Content="Create Student" Command="{Binding CreateStudentCommand}" Margin="10" Padding="5" />
+            <Button Content="Delete Student" Command="{Binding DeleteStudentCommand}" Margin="10" Padding="5" />
+            <Button Content="Update Student" Command="{Binding UpdateStudentCommand}" Margin="10" Padding="5" />
+            <Button Content="Get Citizenship of Student" Command="{Binding SelectedStudent.Nationality}" Margin="10" Padding="5" />
+            <Button Content="Get Major of Student" Command="{Binding SelectedStudent.Major}" Margin="10" Padding="5" />
+
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>

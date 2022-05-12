@@ -23,11 +23,22 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10" />
-            <TextBox Text="{Binding SelectedFaculty.FulName}" Padding="10" Margin="0,0,0,30" />
-            <Button Content="Create Faculty" Command="{Binding CreateFacultyCommand}" Margin="10" Padding="10" />
-            <Button Content="Delete Faculty" Command="{Binding DeleteFacultyCommand}" Margin="10" Padding="10" />
-            <Button Content="Update Faculty" Command="{Binding UpdateFacultyCommand}" Margin="10" Padding="10" />
+            <Label Content="Name" Background="LightBlue" Padding="4" />
+            <TextBox Text="{Binding SelectedFaculty.FacultyName}" Padding="4" Margin="0,0,0,10" />
+
+            <Label Content="Employees of Faculty" Background="LightBlue" Padding="4" />
+            <TextBox Text="{Binding SelectedFaculty.Employees}" Padding="4" Margin="0,0,0,10" />
+
+            <Label Content="Students of Faculty" Background="LightBlue" Padding="4" />
+            <TextBox Text="{Binding SelectedFaculty.Students}" Padding="4" Margin="0,0,0,10" />
+
+
+            <Button Content="Create Faculty" Command="{Binding CreateFacultyCommand}" Margin="10" Padding="4" />
+            <Button Content="Delete Faculty" Command="{Binding DeleteFacultyCommand}" Margin="10" Padding="4" />
+            <Button Content="Update Faculty" Command="{Binding UpdateFacultyCommand}" Margin="10" Padding="4" />
+            <Button Content="Get Faculty Address" Command="{Binding Path=SelectedFaculty.FacultyAddress}" Margin="10" Padding="4" />
+            <Button Content="Get Number of Employees" Command="{Binding Path=SelectedFaculty.Employees.Count}" Margin="10" Padding="4" />
+
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
         </StackPanel>
     </Grid>
