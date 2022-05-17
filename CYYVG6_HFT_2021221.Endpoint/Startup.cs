@@ -65,7 +65,7 @@ namespace CYYVG6_HFT_2021221.Endpoint
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:12307"));
+                .WithOrigins("http://localhost:5001"));
 
 
             app.UseRouting();
